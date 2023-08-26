@@ -8,7 +8,7 @@ public static class ResolveInjector
     {
         return services
             .AddRepositoriesInjector()
-            .AddServiceContractInjector()
+            .AddBusinessContractInjector()
             .AddViewModelContractInjector()
             .AddServicesInjector()
             .AddApplicationServicesInjector();
