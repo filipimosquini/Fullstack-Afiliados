@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Backend.Infra.Migrations
+namespace Backend.Infra.Migrations.Affiliate
 {
     public partial class Initial : Migration
     {

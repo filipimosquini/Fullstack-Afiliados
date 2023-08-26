@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Backend.Infra.Migrations
+namespace Backend.Infra.Migrations.Affiliate
 {
     [DbContext(typeof(AffiliateContext))]
-    [Migration("20230826022111_Initial")]
+    [Migration("20230826040311_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

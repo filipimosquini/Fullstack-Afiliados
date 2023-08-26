@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Backend.Infra.Migrations.Identity
+namespace Backend.Infra.Migrations
 {
     public partial class InitialIdentityConfiguration : Migration
     {

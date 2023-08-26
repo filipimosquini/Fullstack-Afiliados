@@ -3,18 +3,16 @@ using System;
 using Backend.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Backend.Infra.Migrations.Identity
+namespace Backend.Infra.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230826033929_InitialIdentityConfiguration")]
-    partial class InitialIdentityConfiguration
+    partial class IdentityContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

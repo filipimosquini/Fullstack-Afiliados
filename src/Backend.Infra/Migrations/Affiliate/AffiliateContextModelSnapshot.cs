@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Backend.Infra.Migrations
+namespace Backend.Infra.Migrations.Affiliate
 {
     [DbContext(typeof(AffiliateContext))]
     partial class AffiliateContextModelSnapshot : ModelSnapshot
