@@ -20,4 +20,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Backend.Infra.CrossCutting\Backend.Infra.CrossCutting.csproj" />
+    <ProjectReference Include="..\Backend.Infra.Ioc\Backend.Infra.Ioc.csproj" />
+    <ProjectReference Include="..\Backend.Infra\Backend.Infra.csproj" />
+  </ItemGroup>
+
 </Project>

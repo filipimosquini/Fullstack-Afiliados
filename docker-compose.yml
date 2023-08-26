@@ -1,0 +1,32 @@
+version: '3'
+
+volumes:
+  sqldatafiles:
+
+networks: 
+    affiliatefullstack-rede:
+        driver: bridge
+
+services:
+
+  affiliatefullstack.mysql:
+    container_name: affiliatefullstack.mysql
+    image: mysql:8.0.25
+    command: --default-authentication-plugin=mysql_native_password --ssl=0
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    restart: always
+    environment: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"      
+      MYSQL_DATABASE: affiliatefullstack    
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD:     
+    volumes:
+      - sqldatafiles:/var/lib/mysql
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - affiliatefullstack-rede
