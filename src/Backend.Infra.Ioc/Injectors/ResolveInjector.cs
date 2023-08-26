@@ -8,8 +8,8 @@ public static class ResolveInjector
     {
         return services
             .AddRepositoriesInjector()
-            .AddModelValidatorsInjector()
-            .AddRequestValidatorsInjector()
+            .AddServiceContractInjector()
+            .AddViewModelContractInjector()
             .AddServicesInjector()
             .AddApplicationServicesInjector();
     }

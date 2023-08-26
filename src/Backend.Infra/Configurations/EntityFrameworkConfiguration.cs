@@ -26,10 +26,19 @@ public static class EntityFrameworkConfiguration
         using var serviceScope = builder.ApplicationServices
             .GetRequiredService<IServiceScopeFactory>().CreateScope();
         using var context = serviceScope.ServiceProvider.GetService<AffiliateContext>();
+        using var identityContext = serviceScope.ServiceProvider.GetService<IdentityContext>();
 
-        if (context.MigrateDatabase()) return builder;
+        if (context.MigrateDatabase() && identityContext.MigrateDatabase()) return builder;
 
-        context.Database.Migrate();
+        if (!context.MigrateDatabase())
+        {
+            context.Database.Migrate();
+        }
+
+        if (!identityContext.MigrateDatabase())
+        {
+            identityContext.Database.Migrate();
+        }
 
         return builder;
     }
