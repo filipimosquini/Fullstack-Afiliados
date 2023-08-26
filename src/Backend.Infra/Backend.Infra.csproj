@@ -25,6 +25,11 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
   </ItemGroup>
 
 </Project>
