@@ -1,4 +1,5 @@
 ﻿using Backend.Core.Entities;
+using Backend.Core.Resources;
 using FluentValidation;
 
 namespace Backend.Core.Services.Contracts.Business;
@@ -9,23 +10,23 @@ public class FinancialTransactionBusinessContract : AbstractValidator<FinancialT
     {
         RuleFor(x => x.Seller)
             .NotNull()
-            .WithMessage("Seller is required at line {0}");
+            .WithMessage(Messages.FinancialTransactionBusinessContract_SellerIsRequired);
 
         RuleFor(x => x.Product)
             .NotNull()
-            .WithMessage("Product is required at line {0}");
+            .WithMessage(Messages.FinancialTransactionBusinessContract_ProductIsRequired);
 
         RuleFor(x => x.FinancialTransactionType)
             .NotNull()
-            .WithMessage("Transaction Type is required at line {0}");
+            .WithMessage(Messages.FinancialTransactionBusinessContract_FinancialTransactionTypeIsRequired);
 
         RuleFor(x => x.Value)
             .GreaterThan(0)
-            .WithMessage("Value must be greater than zero at line {0}");
+            .WithMessage(Messages.FinancialTransactionBusinessContract_ValueMustBeGreaterThanZero);
 
         RuleFor(x => x.Date)
             .Must(BeAValidDate)
-            .WithMessage("Date must be valid at line {0}");
+            .WithMessage(Messages.FinancialTransactionBusinessContract_DateMustBeValid);
 
     }
 

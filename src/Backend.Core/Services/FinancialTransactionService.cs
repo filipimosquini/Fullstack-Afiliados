@@ -26,7 +26,7 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
         _financialTransactionFileStructureBusinessContract = financialTransactionFileStructureBusinessContract;
     }
 
-    protected Task ValidateFinancialTransactionsAsync(IEnumerable<FinancialTransaction> transactions)
+    public virtual Task ValidateFinancialTransactionsAsync(IEnumerable<FinancialTransaction> transactions)
     {
         var index = 0;
         foreach (var transaction in transactions)
@@ -49,7 +49,7 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
         return Task.CompletedTask;
     }
 
-    protected async Task<ICollection<FinancialTransaction>> CreateFinancialTransactionsAsync(IEnumerable<TransactionDto> transactions)
+    public virtual async Task<ICollection<FinancialTransaction>> CreateFinancialTransactionsAsync(IEnumerable<TransactionDto> transactions)
     {
         var financialTransactions = new List<FinancialTransaction>();
 

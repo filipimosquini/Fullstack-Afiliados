@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Backend.Core.Resources;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 
 namespace Backend.Core.Services.Contracts.Business;
@@ -14,66 +15,66 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
     }
 
     protected string ProvideErrorMessage()
-        => $"File structure is invalid, see log: {string.Join("|", Errors.ToArray())} ";
+        => string.Format(Messages.FileStructureBusinessContract_Message, string.Join("|", Errors.ToArray()));
 
-    protected async Task PropertyIsInteger(string property, Func<List<string>, Task<List<string>>> executeCallback)
+    protected async Task ValueIsInteger(string value, Func<List<string>, Task<List<string>>> executeCallback)
     {
         var _errors = new List<string>();
 
-        if (string.IsNullOrWhiteSpace(property))
+        if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add("Property {0} was no informed");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
         }
 
-        if (!Int32.TryParse(property, out _))
+        if (!Int32.TryParse(value, out _))
         {
-            _errors.Add("Property {0} must be an integer number valid");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueMustBeInteger);
         }
 
         await executeCallback(_errors);
     }
 
-    protected async Task PropertyIsDouble(string property, Func<List<string>, Task<List<string>>> executeCallback)
+    protected async Task ValueIsDouble(string value, Func<List<string>, Task<List<string>>> executeCallback)
     {
         var _errors = new List<string>();
 
-        if (string.IsNullOrWhiteSpace(property))
+        if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add("Property {0} was no informed");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
         }
 
-        if (!double.TryParse(property, out _))
+        if (!double.TryParse(value, out _))
         {
-            _errors.Add("Property {0} must be a decimal number valid");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueMustBeDouble);
         }
 
         await executeCallback(_errors);
     }
 
-    protected async Task PropertyIsDateTime(string property, Func<List<string>, Task<List<string>>> executeCallback)
+    protected async Task ValueIsDateTime(string value, Func<List<string>, Task<List<string>>> executeCallback)
     {
         var _errors = new List<string>();
 
-        if (string.IsNullOrWhiteSpace(property))
+        if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add("Property {0} was no informed");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
         }
 
-        if (!DateTime.TryParse(property, out _))
+        if (!DateTime.TryParse(value, out _))
         {
-            _errors.Add("Property {0} must be a date valid");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueMustBeDateTime);
         }
 
         await executeCallback(_errors);
     }
 
-    protected async Task PropertyIsNotNullOrWhiteSpace(string property, Func<List<string>, Task<List<string>>> executeCallback)
+    protected async Task ValueIsNotNullOrWhiteSpace(string value, Func<List<string>, Task<List<string>>> executeCallback)
     {
         var _errors = new List<string>();
 
-        if (string.IsNullOrWhiteSpace(property))
+        if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add("Property {0} was no informed");
+            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
         }
 
         await executeCallback(_errors);
@@ -91,7 +92,7 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
 
                 if (string.IsNullOrWhiteSpace(line))
                 {
-                    Errors.Add($"Line {index} is empty");
+                    Errors.Add( string.Format(Messages.FileStructureBusinessContract_LineIsEmpty, index));
                     continue;
                 }
 
@@ -104,12 +105,11 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
                     seller = line.Substring(66, line.Length - 66)
                 };
 
-                await PropertyIsInteger(lineContent.type, (errors) =>
+                await ValueIsInteger(lineContent.type, (errors) =>
                 {
                     errors.ForEach(error =>
                     {
-                        error = string.Format(error, "Type");
-                        error += $" at line {index}";
+                        error = string.Format(error, "Type", index);
 
                         Errors.Add(error);
                     });
@@ -117,12 +117,11 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
                     return Task.FromResult(Errors);
                 });
 
-                await PropertyIsDateTime(lineContent.date, (errors) =>
+                await ValueIsDateTime(lineContent.date, (errors) =>
                 {
                     errors.ForEach(error =>
                     {
-                        error = string.Format(error, "Date");
-                        error += $" at line {index}";
+                        error = string.Format(error, "Date", index);
 
                         Errors.Add(error);
                     });
@@ -130,12 +129,11 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
                     return Task.FromResult(Errors);
                 });
 
-                await PropertyIsNotNullOrWhiteSpace(lineContent.product, (errors) =>
+                await ValueIsNotNullOrWhiteSpace(lineContent.product, (errors) =>
                 {
                     errors.ForEach(error =>
                     {
-                        error = string.Format(error, "Product");
-                        error += $" at line {index}";
+                        error = string.Format(error, "Product", index);
 
                         Errors.Add(error);
                     });
@@ -143,12 +141,11 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
                     return Task.FromResult(Errors);
                 });
 
-                await PropertyIsDouble(lineContent.value, (errors) =>
+                await ValueIsDouble(lineContent.value, (errors) =>
                 {
                     errors.ForEach(error =>
                     {
-                        error = string.Format(error, "Value");
-                        error += $" at line {index}";
+                        error = string.Format(error, "Value", index);
 
                         Errors.Add(error);
                     });
@@ -156,12 +153,11 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
                     return Task.FromResult(Errors);
                 });
 
-                await PropertyIsNotNullOrWhiteSpace(lineContent.seller, (errors) =>
+                await ValueIsNotNullOrWhiteSpace(lineContent.seller, (errors) =>
                 {
                     errors.ForEach(error =>
                     {
-                        error = string.Format(error, "Seller");
-                        error += $" at line {index}";
+                        error = string.Format(error, "Seller", index);
 
                         Errors.Add(error);
                     });

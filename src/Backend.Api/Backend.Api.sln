@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Api", "Backend.Api.csproj", "{43567E7E-F5AD-4840-B965-DC5D5BF943A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Api", "Backend.Api.csproj", "{43567E7E-F5AD-4840-B965-DC5D5BF943A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core", "..\Backend.Core\Backend.Core.csproj", "{7AF5E1C4-D5B3-4CA9-B2FF-BDE47EDF7DA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core", "..\Backend.Core\Backend.Core.csproj", "{7AF5E1C4-D5B3-4CA9-B2FF-BDE47EDF7DA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infra", "..\Backend.Infra\Backend.Infra.csproj", "{660DB1A7-EFC8-4346-A2A6-27C2C85C14C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infra", "..\Backend.Infra\Backend.Infra.csproj", "{660DB1A7-EFC8-4346-A2A6-27C2C85C14C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infra.CrossCutting", "..\Backend.Infra.CrossCutting\Backend.Infra.CrossCutting.csproj", "{2E5F2D67-9722-451D-A1FB-64C73799736A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infra.CrossCutting", "..\Backend.Infra.CrossCutting\Backend.Infra.CrossCutting.csproj", "{2E5F2D67-9722-451D-A1FB-64C73799736A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Infra.Ioc", "..\Backend.Infra.Ioc\Backend.Infra.Ioc.csproj", "{737A83C1-73B4-4F51-9CC1-3C13E4E66E4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infra.Ioc", "..\Backend.Infra.Ioc\Backend.Infra.Ioc.csproj", "{737A83C1-73B4-4F51-9CC1-3C13E4E66E4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.UnitTest", "..\Backend.UnitTest\Backend.UnitTest.csproj", "{AE3FF8F3-B442-4F0E-A0FB-1AD990B49C3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{737A83C1-73B4-4F51-9CC1-3C13E4E66E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{737A83C1-73B4-4F51-9CC1-3C13E4E66E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{737A83C1-73B4-4F51-9CC1-3C13E4E66E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE3FF8F3-B442-4F0E-A0FB-1AD990B49C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE3FF8F3-B442-4F0E-A0FB-1AD990B49C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE3FF8F3-B442-4F0E-A0FB-1AD990B49C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE3FF8F3-B442-4F0E-A0FB-1AD990B49C3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

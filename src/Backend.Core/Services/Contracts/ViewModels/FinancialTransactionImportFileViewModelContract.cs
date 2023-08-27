@@ -1,4 +1,5 @@
-﻿using Backend.Core.Services.ViewModels;
+﻿using Backend.Core.Resources;
+using Backend.Core.Services.ViewModels;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 
@@ -9,9 +10,9 @@ public class FinancialTransactionImportFileViewModelContract : AbstractValidator
     public FinancialTransactionImportFileViewModelContract()
     {
         RuleFor(x => x.File)
-            .Must(FileIsNullOrEmptyValidate).WithMessage("File is required")
-            .Must(ContentTypeIsPresentValidate).WithMessage("Content Type is required")
-            .Must(ContentTypeIsTextPlainValidate).WithMessage("File must be a text file");
+            .Must(FileIsNullOrEmptyValidate).WithMessage(Messages.FinancialTransactionImportFileViewModelContract_FileIsRequired)
+            .Must(ContentTypeIsPresentValidate).WithMessage(Messages.FinancialTransactionImportFileViewModelContract_ContentTypeIsRequired)
+            .Must(ContentTypeIsTextPlainValidate).WithMessage(Messages.FinancialTransactionImportFileViewModelContract_FileMustBeTextFile);
     }
 
     protected bool ContentTypeIsPresentValidate(IFormFile? file)

@@ -1,4 +1,5 @@
-﻿using Backend.Core.Services.ViewModels;
+﻿using Backend.Core.Resources;
+using Backend.Core.Services.ViewModels;
 using FluentValidation;
 
 namespace Backend.Core.Services.Contracts.ViewModels;
@@ -8,15 +9,15 @@ public class UserViewModelContract : AbstractValidator<UserViewModel>
     public UserViewModelContract()
     {
         RuleFor(x => x.Email)
-            .NotEmpty().NotNull().WithMessage("The field e-mail is required")
-            .EmailAddress().WithMessage("The field e-mail is invalid");
+            .NotEmpty().NotNull().WithMessage(Messages.UserViewModelContract_EmailIsRequired)
+            .EmailAddress().WithMessage(Messages.UserViewModelContract_EmailIsInvalid);
 
         RuleFor(x => x.Password)
-            .NotEmpty().NotNull().WithMessage("The field password is required")
-            .Length(6, 15).WithMessage("A password must have between 6 a 15 characters");
+            .NotEmpty().NotNull().WithMessage(Messages.UserViewModelContract_PasswordIsRequired)
+            .Length(6, 15).WithMessage(Messages.UserViewModelContract_PasswordMustHaveBetween_6_15_characteres);
 
         RuleFor(x => x.ConfirmPassword)
             .Must((model, field) => model.Password.Equals(field))
-            .WithMessage("The passwords are different");
+            .WithMessage(Messages.UserViewModelContract_PasswordsAreDifferent);
     }
 }
