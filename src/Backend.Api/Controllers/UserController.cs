@@ -16,7 +16,14 @@ public class UserController : MainController
         _service = userService;
     }
 
+    /// <summary>
+    /// Create a new user
+    /// </summary>
+    /// <param name="viewModel"></param>
+    /// <returns> Informations about token JWT </returns>
     [HttpPost]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [ProducesResponseType(typeof(AuthenticationDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> AddUserAsync([FromBody] UserViewModel viewModel)

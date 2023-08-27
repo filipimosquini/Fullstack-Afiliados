@@ -16,7 +16,14 @@ public class SingInController : MainController
         _service = service;
     }
 
+    /// <summary>
+    /// Log in to the application
+    /// </summary>
+    /// <param name="viewModel"></param>
+    /// <returns> Informations about token JWT </returns>
     [HttpPost]
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [ProducesResponseType(typeof(AuthenticationDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> SignInAsync([FromBody] SignInViewModel viewModel)
