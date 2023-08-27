@@ -8,7 +8,7 @@ public class SellerMap : IEntityTypeConfiguration<Seller>
 {
     public void Configure(EntityTypeBuilder<Seller> builder)
     {
-        builder.ToTable("affiliate");
+        builder.ToTable("seller");
         builder.HasKey(x => x.Id);
 
         builder.HasData(Seed());
