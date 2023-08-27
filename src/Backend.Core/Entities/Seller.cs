@@ -2,7 +2,7 @@
 
 namespace Backend.Core.Entities;
 
-public class Affiliate : BaseEntity
+public class Seller : BaseEntity
 {
     public string Name { get; set; }
 

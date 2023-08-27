@@ -12,10 +12,10 @@ public static class EntityFrameworkConfiguration
         IConfiguration configuration)
     {
         var mySqlConnection = configuration.GetConnectionString("MySqlConnection");
-        services.AddDbContext<AffiliateContext>(options =>
+        services.AddDbContext<SellerContext>(options =>
         {
             options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection),
-                x => x.MigrationsAssembly(typeof(AffiliateContext).Assembly.FullName));
+                x => x.MigrationsAssembly(typeof(SellerContext).Assembly.FullName));
         });
 
         return services;
@@ -25,7 +25,7 @@ public static class EntityFrameworkConfiguration
     {
         using var serviceScope = builder.ApplicationServices
             .GetRequiredService<IServiceScopeFactory>().CreateScope();
-        using var context = serviceScope.ServiceProvider.GetService<AffiliateContext>();
+        using var context = serviceScope.ServiceProvider.GetService<SellerContext>();
         using var identityContext = serviceScope.ServiceProvider.GetService<IdentityContext>();
 
         if (context.MigrateDatabase() && identityContext.MigrateDatabase()) return builder;

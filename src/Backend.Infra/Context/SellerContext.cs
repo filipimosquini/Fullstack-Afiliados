@@ -7,18 +7,18 @@ using System.Data.Common;
 using Backend.Core.Entities;
 
 namespace Backend.Infra.Context;
-public class AffiliateContext : DbContext
+public class SellerContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
-    public AffiliateContext(DbContextOptions<AffiliateContext> options, IConfiguration configuration) : base(options)
+    public SellerContext(DbContextOptions<SellerContext> options, IConfiguration configuration) : base(options)
     {
         _configuration = configuration;
     }
 
     public DbSet<FinancialTransaction> FinancialTransactions { get; set; }
     public DbSet<FinancialTransactionType> FinancialTransactionTypes { get; set; }
-    public DbSet<Affiliate> Affiliates { get; set; }
+    public DbSet<Seller> Sellers { get; set; }
     public DbSet<Product> Products { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,7 +32,7 @@ public class AffiliateContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AffiliateContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SellerContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
 
