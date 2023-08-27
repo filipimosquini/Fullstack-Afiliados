@@ -13,17 +13,17 @@ public class FinancialTransactionMap : IEntityTypeConfiguration<FinancialTransac
 
         builder
             .HasOne(x => x.Product)
-            .WithMany(x => x.Transactions)
+            .WithMany(x => x.FinancialTransaction)
             .OnDelete(DeleteBehavior.SetNull);
 
         builder
-            .HasOne(x => x.Affiliate)
-            .WithMany(x => x.Transactions)
+            .HasOne(x => x.Seller)
+            .WithMany(x => x.FinancialTransaction)
             .OnDelete(DeleteBehavior.SetNull);
 
         builder
-            .HasOne(x => x.TransactionType)
-            .WithMany(x => x.Transactions)
+            .HasOne(x => x.FinancialTransactionType)
+            .WithMany(x => x.FinancialTransaction)
             .OnDelete(DeleteBehavior.SetNull);
     }
 }

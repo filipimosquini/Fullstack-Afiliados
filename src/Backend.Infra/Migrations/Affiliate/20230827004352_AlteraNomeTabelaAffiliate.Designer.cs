@@ -192,7 +192,7 @@ namespace Backend.Infra.Migrations.Affiliate
 
             modelBuilder.Entity("Backend.Core.Entities.FinancialTransaction", b =>
                 {
-                    b.HasOne("Backend.Core.Entities.Seller", "Affiliate")
+                    b.HasOne("Backend.Core.Entities.Seller", "Seller")
                         .WithMany("Transactions")
                         .HasForeignKey("AffiliateId")
                         .OnDelete(DeleteBehavior.SetNull);
@@ -207,7 +207,7 @@ namespace Backend.Infra.Migrations.Affiliate
                         .HasForeignKey("TransactionTypeId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("Affiliate");
+                    b.Navigation("Seller");
 
                     b.Navigation("Product");
 
