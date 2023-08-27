@@ -5,5 +5,5 @@ namespace Backend.Core.Repositories;
 
 public interface IProductRepository : IBaseRepository<Product>
 {
-    
+    Task<Product?> FindByDescription(string description);
 }

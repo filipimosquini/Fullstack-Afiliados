@@ -9,7 +9,7 @@ public class FinancialTransactionImportFileViewModelContract : AbstractValidator
     public FinancialTransactionImportFileViewModelContract()
     {
         RuleFor(x => x.File)
-            .Must(FileIsNullOrEmptyValidate).WithMessage("File must be valid")
+            .Must(FileIsNullOrEmptyValidate).WithMessage("File is required")
             .Must(ContentTypeIsPresentValidate).WithMessage("Content Type is required")
             .Must(ContentTypeIsTextPlainValidate).WithMessage("File must be a text file");
     }

@@ -7,5 +7,5 @@ public class Product : BaseEntity
     public string Description { get; set; }
 
     /* EF Relation */
-    public IList<FinancialTransaction> Transactions { get; set; }
+    public IList<FinancialTransaction> FinancialTransaction { get; set; }
 }

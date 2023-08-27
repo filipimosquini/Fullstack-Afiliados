@@ -5,5 +5,5 @@ namespace Backend.Core.Repositories;
 
 public interface ISellerRepository : IBaseRepository<Seller>
 {
-    
+    Task<Seller?> FindByName(string name);
 }

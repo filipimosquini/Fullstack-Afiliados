@@ -13,6 +13,13 @@ public class FinancialTransactionRepository : BaseRepository<FinancialTransactio
         _context = context;
     }
 
+    public async Task RemoveAll()
+    {
+        _context.FinancialTransactions.RemoveRange(_context.FinancialTransactions);
+        await _context.SaveChangesAsync();
+    }
+
+
     public void Dispose()
     {
         if (_context != null)

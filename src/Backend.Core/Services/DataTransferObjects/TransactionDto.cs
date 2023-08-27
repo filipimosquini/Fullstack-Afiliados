@@ -1,6 +1,6 @@
 ﻿namespace Backend.Core.Services.DataTransferObjects;
 
-public class FileDto
+public class TransactionDto
 {
     public int FinancialTransactionType { get; set; }
     public DateTime? Date { get; set; }

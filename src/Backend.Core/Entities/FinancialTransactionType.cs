@@ -9,5 +9,5 @@ public class FinancialTransactionType : BaseEntity
     public string Signal { get; set; }
 
     /* EF Relation */
-    public IList<FinancialTransaction> Transactions { get; set; }
+    public IList<FinancialTransaction> FinancialTransaction { get; set; }
 }

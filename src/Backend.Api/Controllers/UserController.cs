@@ -19,13 +19,13 @@ public class UserController : MainController
     [HttpPost]
     [ProducesResponseType(typeof(AuthenticationDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Post([FromBody] UserViewModel viewModel)
+    public async Task<IActionResult> AddUserAsync([FromBody] UserViewModel viewModel)
     {
         if (!ModelState.IsValid)
         {
             return CustomResponseError(ModelState);
         }
 
-        return CustomResponse(await _service.AddUser(viewModel));
+        return CustomResponse(await _service.AddUserAsync(viewModel));
     }
 }

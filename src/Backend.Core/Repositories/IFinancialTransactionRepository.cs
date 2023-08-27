@@ -5,5 +5,5 @@ namespace Backend.Core.Repositories;
 
 public interface IFinancialTransactionRepository : IBaseRepository<FinancialTransaction>
 {
-    
+    Task RemoveAll();
 }

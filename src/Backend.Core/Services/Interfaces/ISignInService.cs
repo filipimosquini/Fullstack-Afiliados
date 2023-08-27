@@ -5,5 +5,5 @@ namespace Backend.Core.Services.Interfaces;
 
 public interface ISignInService
 {
-    Task<CustomValidationResult> SignIn(SignInViewModel viewModel);
+    Task<CustomValidationResult> SignInAsync(SignInViewModel viewModel);
 }

@@ -19,7 +19,7 @@ public class SignInService : BaseService, ISignInService
         _signInViewModelContract = signInViewModelContract;
     }
 
-    public async Task<CustomValidationResult> SignIn(SignInViewModel viewModel)
+    public async Task<CustomValidationResult> SignInAsync(SignInViewModel viewModel)
     {
         var validateViewModel = _signInViewModelContract.Validate(viewModel);
 

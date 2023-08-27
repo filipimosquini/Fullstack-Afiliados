@@ -5,5 +5,5 @@ namespace Backend.Core.Services.Interfaces;
 
 public interface IUserService
 {
-    Task<CustomValidationResult> AddUser(UserViewModel viewModel);
+    Task<CustomValidationResult> AddUserAsync(UserViewModel viewModel);
 }

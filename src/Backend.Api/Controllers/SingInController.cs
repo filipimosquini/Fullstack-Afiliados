@@ -19,13 +19,13 @@ public class SingInController : MainController
     [HttpPost]
     [ProducesResponseType(typeof(AuthenticationDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> SignIn([FromBody] SignInViewModel viewModel)
+    public async Task<IActionResult> SignInAsync([FromBody] SignInViewModel viewModel)
     {
         if (!ModelState.IsValid)
         {
             return CustomResponseError(ModelState);
         }
 
-        return CustomResponse(await _service.SignIn(viewModel));
+        return CustomResponse(await _service.SignInAsync(viewModel));
     }
 }

@@ -17,7 +17,6 @@ public static class AuthenticationSetup
         services.AddDefaultIdentity<IdentityUser>()
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<IdentityContext>()
-            .AddErrorDescriber<TranslateIdentityMessagesToPortuguese>()
             .AddDefaultTokenProviders();
 
         var appSettingsSection = configuration.GetSection("Identity");

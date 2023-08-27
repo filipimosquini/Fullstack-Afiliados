@@ -22,7 +22,7 @@ public class UserService : BaseService, IUserService
         _userViewModelContract = userViewModelContract;
     }
 
-    public async Task<CustomValidationResult> AddUser(UserViewModel viewModel)
+    public async Task<CustomValidationResult> AddUserAsync(UserViewModel viewModel)
     {
         var validateViewModel = _userViewModelContract.Validate(viewModel);
 

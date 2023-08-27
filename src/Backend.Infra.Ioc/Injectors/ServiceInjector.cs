@@ -12,6 +12,8 @@ internal static class ServiceInjector
             .AddScoped<IAuthenticationService, AuthenticationService>()
             .AddScoped<IUserService, UserService>()
             .AddScoped<ISignInService, SignInService>()
+            .AddScoped<IFinancialTransactionService, FinancialTransactionService>()
+            .AddScoped<IFileService, FileService>()
             ;
     }
 }

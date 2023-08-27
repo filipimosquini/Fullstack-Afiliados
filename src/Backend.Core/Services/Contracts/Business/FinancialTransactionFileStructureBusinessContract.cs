@@ -14,7 +14,7 @@ public class FinancialTransactionFileStructureBusinessContract : AbstractValidat
     }
 
     protected string ProvideErrorMessage()
-        => $"File structure is invalid, see log below: \n\n {string.Join("\n ", Errors.ToArray())} ";
+        => $"File structure is invalid, see log: {string.Join("|", Errors.ToArray())} ";
 
     protected async Task PropertyIsInteger(string property, Func<List<string>, Task<List<string>>> executeCallback)
     {
