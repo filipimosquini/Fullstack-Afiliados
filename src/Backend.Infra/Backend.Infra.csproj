@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Context\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Bases\" />
   </ItemGroup>
 
   <ItemGroup>

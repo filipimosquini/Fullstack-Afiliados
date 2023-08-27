@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Backend.Infra.Migrations.Affiliate
 {
-    [DbContext(typeof(AffiliateContext))]
+    [DbContext(typeof(SellerContext))]
     [Migration("20230826040311_Initial")]
     partial class Initial
     {
@@ -21,7 +21,7 @@ namespace Backend.Infra.Migrations.Affiliate
                 .HasAnnotation("ProductVersion", "6.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Backend.Core.Entities.Affiliate", b =>
+            modelBuilder.Entity("Backend.Core.Entities.Seller", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -192,7 +192,7 @@ namespace Backend.Infra.Migrations.Affiliate
 
             modelBuilder.Entity("Backend.Core.Entities.FinancialTransaction", b =>
                 {
-                    b.HasOne("Backend.Core.Entities.Affiliate", "Affiliate")
+                    b.HasOne("Backend.Core.Entities.Seller", "Seller")
                         .WithMany("Transactions")
                         .HasForeignKey("AffiliateId")
                         .OnDelete(DeleteBehavior.SetNull);
@@ -207,14 +207,14 @@ namespace Backend.Infra.Migrations.Affiliate
                         .HasForeignKey("TransactionTypeId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("Affiliate");
+                    b.Navigation("Seller");
 
                     b.Navigation("Product");
 
                     b.Navigation("TransactionType");
                 });
 
-            modelBuilder.Entity("Backend.Core.Entities.Affiliate", b =>
+            modelBuilder.Entity("Backend.Core.Entities.Seller", b =>
                 {
                     b.Navigation("Transactions");
                 });
