@@ -196,6 +196,33 @@ namespace Backend.Core.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Email or password are incorrect.
+        /// </summary>
+        internal static string SignInService_EmailAndPasswordAreIncorrect {
+            get {
+                return ResourceManager.GetString("SignInService_EmailAndPasswordAreIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Sign in not allowed.
+        /// </summary>
+        internal static string SignInService_UserIsNotAllowed {
+            get {
+                return ResourceManager.GetString("SignInService_UserIsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a User temporarily blocked for invalid attempt.
+        /// </summary>
+        internal static string SignInService_UserIstemporarilyBlocked {
+            get {
+                return ResourceManager.GetString("SignInService_UserIstemporarilyBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The field e-mail is invalid.
         /// </summary>
         internal static string SignInViewModelContract_EmailIsInvalid {

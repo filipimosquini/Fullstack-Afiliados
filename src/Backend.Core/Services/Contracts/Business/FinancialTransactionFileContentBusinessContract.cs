@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace Backend.Core.Services.Contracts.Business;
 
-public class FinancialTransactionFileStructureBusinessContract : AbstractValidator<IFormFile>
+public class FinancialTransactionFileContentBusinessContract : AbstractValidator<IFormFile>
 {
     private List<string> Errors = new List<string>();
 
-    public FinancialTransactionFileStructureBusinessContract()
+    public FinancialTransactionFileContentBusinessContract()
     {
         RuleFor(x => x)
             .CustomAsync(ValidateFileStructure);

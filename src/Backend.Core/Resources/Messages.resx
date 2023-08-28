@@ -162,6 +162,15 @@
   <data name="FinancialTransactionImportFileViewModelContract_FileMustBeTextFile" xml:space="preserve">
     <value>File must be a text file</value>
   </data>
+  <data name="SignInService_EmailAndPasswordAreIncorrect" xml:space="preserve">
+    <value>Email or password are incorrect</value>
+  </data>
+  <data name="SignInService_UserIsNotAllowed" xml:space="preserve">
+    <value>Sign in not allowed</value>
+  </data>
+  <data name="SignInService_UserIstemporarilyBlocked" xml:space="preserve">
+    <value>User temporarily blocked for invalid attempt</value>
+  </data>
   <data name="SignInViewModelContract_EmailIsInvalid" xml:space="preserve">
     <value>The field e-mail is invalid</value>
   </data>

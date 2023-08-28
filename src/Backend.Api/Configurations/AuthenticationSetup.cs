@@ -39,8 +39,8 @@ public static class AuthenticationSetup
                 IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuer = true,
                 ValidateAudience = true,
-                ValidAudience = identitySettings.ValidoEm,
-                ValidIssuer = identitySettings.Emissor
+                ValidAudience = identitySettings.ValidOn,
+                ValidIssuer = identitySettings.Issuer
             };
         });
 

@@ -49,10 +49,10 @@ public class AuthenticationService : BaseService, IAuthenticationService
         var key = Encoding.ASCII.GetBytes(_identity.Secret);
         var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
         {
-            Issuer = _identity.Emissor,
-            Audience = _identity.ValidoEm,
+            Issuer = _identity.Issuer,
+            Audience = _identity.ValidOn,
             Subject = identityClaims,
-            Expires = DateTime.UtcNow.AddHours(_identity.ExpiracaoHoras),
+            Expires = DateTime.UtcNow.AddHours(_identity.ExpiratesIn),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         });
 
@@ -64,7 +64,7 @@ public class AuthenticationService : BaseService, IAuthenticationService
         return new AuthenticationDto
         {
             AccessToken = encodedToken,
-            ExpiresIn = TimeSpan.FromHours(_identity.ExpiracaoHoras).TotalSeconds,
+            ExpiresIn = TimeSpan.FromHours(_identity.ExpiratesIn).TotalSeconds,
             UserToken = new UserToken
             {
                 Id = user.Id,

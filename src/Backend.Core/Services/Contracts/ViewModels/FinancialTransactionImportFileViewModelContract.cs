@@ -28,7 +28,7 @@ public class FinancialTransactionImportFileViewModelContract : AbstractValidator
     protected bool ContentTypeIsTextPlainValidate(IFormFile? file)
     {
 
-        if (file?.ContentType.ToLower() != "text/plain")
+        if (file?.ContentType?.ToLower() != "text/plain")
         {
             return false;
         }

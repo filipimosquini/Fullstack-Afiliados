@@ -15,18 +15,18 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
     private readonly IFileService _fileService;
     private readonly FinancialTransactionBusinessContract _financialTransactionBusinessContract;
     private readonly FinancialTransactionImportFileViewModelContract _financialTransactionImportFileViewModelContract;
-    private readonly FinancialTransactionFileStructureBusinessContract _financialTransactionFileStructureBusinessContract;
+    private readonly FinancialTransactionFileContentBusinessContract _financialTransactionFileContentBusinessContract;
     
-    public FinancialTransactionService(IUnitOfWork unitOfWork, IFileService fileService, FinancialTransactionBusinessContract financialTransactionBusinessContract, FinancialTransactionImportFileViewModelContract financialTransactionImportFileViewModelContract, FinancialTransactionFileStructureBusinessContract financialTransactionFileStructureBusinessContract)
+    public FinancialTransactionService(IUnitOfWork unitOfWork, IFileService fileService, FinancialTransactionBusinessContract financialTransactionBusinessContract, FinancialTransactionImportFileViewModelContract financialTransactionImportFileViewModelContract, FinancialTransactionFileContentBusinessContract financialTransactionFileContentBusinessContract)
     {
         _unitOfWork = unitOfWork;
         _fileService = fileService;
         _financialTransactionBusinessContract = financialTransactionBusinessContract;
         _financialTransactionImportFileViewModelContract = financialTransactionImportFileViewModelContract;
-        _financialTransactionFileStructureBusinessContract = financialTransactionFileStructureBusinessContract;
+        _financialTransactionFileContentBusinessContract = financialTransactionFileContentBusinessContract;
     }
 
-    public virtual Task ValidateFinancialTransactionsAsync(IEnumerable<FinancialTransaction> transactions)
+    public virtual Task<bool> ValidateFinancialTransactionsAsync(IEnumerable<FinancialTransaction> transactions)
     {
         var index = 0;
         foreach (var transaction in transactions)
@@ -46,7 +46,7 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
             }
         }
 
-        return Task.CompletedTask;
+        return Task.FromResult(CustomValidationResult.IsValid);
     }
 
     public virtual async Task<ICollection<FinancialTransaction>> CreateFinancialTransactionsAsync(IEnumerable<TransactionDto> transactions)
@@ -83,7 +83,7 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
         }
 
         var validateFileContent =
-            await _financialTransactionFileStructureBusinessContract.ValidateAsync(viewModel.File);
+            await _financialTransactionFileContentBusinessContract.ValidateAsync(viewModel.File);
 
         if (!validateFileContent.IsValid)
         {
@@ -95,9 +95,9 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
 
         var transactions = await CreateFinancialTransactionsAsync(transactionsDto);
 
-        await ValidateFinancialTransactionsAsync(transactions);
+        var hasValidTransactions = await ValidateFinancialTransactionsAsync(transactions);
 
-        if (!CustomValidationResult.IsValid)
+        if (!hasValidTransactions)
         {
             return CustomValidationResult;
         }

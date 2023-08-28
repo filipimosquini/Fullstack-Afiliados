@@ -1,4 +1,5 @@
 ﻿using Backend.Core.Bases;
+using Backend.Core.Resources;
 using Backend.Core.Services.Contracts.ViewModels;
 using Backend.Core.Services.Interfaces;
 using Backend.Core.Services.ViewModels;
@@ -33,17 +34,17 @@ public class SignInService : BaseService, ISignInService
 
         if (resultado.IsLockedOut)
         {
-            AddError("User temporarily blocked for invalid attempt");
+            AddError(Messages.SignInService_UserIstemporarilyBlocked);
         }
 
         if (resultado.IsNotAllowed)
         {
-            AddError("Sign in not allowed");
+            AddError(Messages.SignInService_UserIsNotAllowed);
         }
 
         if (!resultado.Succeeded)
         {
-            AddError("Email or password are incorrect");
+            AddError(Messages.SignInService_EmailAndPasswordAreIncorrect);
         }
 
         if (!CustomValidationResult.IsValid)

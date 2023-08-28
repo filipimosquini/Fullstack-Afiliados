@@ -20,7 +20,7 @@ internal static class ContractInjector
     {
         return 
             services
-            .AddScoped<FinancialTransactionFileStructureBusinessContract, FinancialTransactionFileStructureBusinessContract>()
+            .AddScoped<FinancialTransactionFileContentBusinessContract, FinancialTransactionFileContentBusinessContract>()
             .AddScoped<FinancialTransactionBusinessContract, FinancialTransactionBusinessContract>()
             ;
     }
