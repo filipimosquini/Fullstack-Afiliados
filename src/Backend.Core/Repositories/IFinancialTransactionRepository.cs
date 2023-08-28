@@ -5,5 +5,6 @@ namespace Backend.Core.Repositories;
 
 public interface IFinancialTransactionRepository : IBaseRepository<FinancialTransaction>
 {
+    Task<IEnumerable<FinancialTransaction>> GetImportedTransactionsAsync();
     Task RemoveAll();
 }

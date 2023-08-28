@@ -112,4 +112,29 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
 
         return CustomValidationResult;
     }
+
+    public async Task<IEnumerable<ImportedTransactionsDto>> GetImportedTransactionsAsync()
+    {
+        var collection = await _unitOfWork.FinancialTransactionRepository.GetImportedTransactionsAsync();
+
+        return collection
+            .GroupBy(x => new { x.Seller.Name })
+            .OrderBy(x => x.Key.Name)
+            .Select(x => new ImportedTransactionsDto
+            {
+                SellerName = x.Key.Name,
+                Total = (x.Where(x => x.FinancialTransactionType.Signal == "+")
+                            .Sum(z => z.Value) - 
+                         x.Where(x => x.FinancialTransactionType.Signal == "-")
+                             .Sum(z => z.Value)),
+                Details = x.Select(x => new ImportedTransactionsDetailsDto()
+                {
+                    FinancialTransactionTypeDescription = x.FinancialTransactionType.Description,
+                    FinancialTransactionTypeNature = x.FinancialTransactionType.Nature,
+                    FinancialTransactionTypeSignal = x.FinancialTransactionType.Signal,
+                    Product = x.Product.Description,
+                    Value = x.Value
+                })
+            });
+    }
 }

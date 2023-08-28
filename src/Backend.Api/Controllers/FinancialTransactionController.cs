@@ -1,5 +1,6 @@
 ﻿using Backend.Api.Bases;
 using Backend.Core.Bases;
+using Backend.Core.Services.DataTransferObjects;
 using Backend.Core.Services.Interfaces;
 using Backend.Core.Services.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Api.Controllers;
 
 [Authorize]
-[Route("api/transactions")]
+[Route("api/financial-transactions")]
 public class FinancialTransactionController : MainController
 {
 
@@ -18,6 +19,7 @@ public class FinancialTransactionController : MainController
     {
         _service = service;
     }
+
     /// <summary>
     /// Import transactions from file
     /// </summary>
@@ -43,4 +45,25 @@ public class FinancialTransactionController : MainController
 
         return CustomResponse(await _service.ImportFinancialTransactionFileAsync(viewModel));
     }
+
+    /// <summary>
+    /// Get imported transactions
+    /// </summary>
+    /// <returns> Return list of imported transactions </returns>
+    [HttpGet]
+    [Consumes("multipart/form-data")]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(ImportedTransactionsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> GetImportedTransactionsAsync()
+    {
+        if (!ModelState.IsValid)
+        {
+            return CustomResponseError(ModelState);
+        }
+
+        return CustomResponse(await _service.GetImportedTransactionsAsync());
+    }
+
 }
