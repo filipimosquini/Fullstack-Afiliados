@@ -63,63 +63,63 @@ namespace Backend.Core.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Line {0} is empty.
         /// </summary>
-        internal static string FileStructureBusinessContract_LineIsEmpty {
+        internal static string FileContentBusinessContract_LineIsEmpty {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_LineIsEmpty", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_LineIsEmpty", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a File structure is invalid, see log: | {0}.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid file content, see log: | {0}.
         /// </summary>
-        internal static string FileStructureBusinessContract_Message {
+        internal static string FileContentBusinessContract_Message {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_Message", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_Message", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Property {0} was no informed at line {1}.
         /// </summary>
-        internal static string FileStructureBusinessContract_ValueIsNotNullOrWhiteSpace {
+        internal static string FileContentBusinessContract_ValueIsNotNullOrWhiteSpace {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_ValueIsNotNullOrWhiteSpace", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_ValueIsNotNullOrWhiteSpace", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Property {0} must be a date valid at line {1}.
         /// </summary>
-        internal static string FileStructureBusinessContract_ValueMustBeDateTime {
+        internal static string FileContentBusinessContract_ValueMustBeDateTime {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_ValueMustBeDateTime", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_ValueMustBeDateTime", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Property {0} must be a decimal number valid at line {1}.
         /// </summary>
-        internal static string FileStructureBusinessContract_ValueMustBeDouble {
+        internal static string FileContentBusinessContract_ValueMustBeDouble {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_ValueMustBeDouble", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_ValueMustBeDouble", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Property {0} must be an integer number valid at line {1}.
         /// </summary>
-        internal static string FileStructureBusinessContract_ValueMustBeInteger {
+        internal static string FileContentBusinessContract_ValueMustBeInteger {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_ValueMustBeInteger", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_ValueMustBeInteger", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Property {0} was no informed at line {1}.
         /// </summary>
-        internal static string FileStructureBusinessContract_ValueNoInformed {
+        internal static string FileContentBusinessContract_ValueNoInformed {
             get {
-                return ResourceManager.GetString("FileStructureBusinessContract_ValueNoInformed", resourceCulture);
+                return ResourceManager.GetString("FileContentBusinessContract_ValueNoInformed", resourceCulture);
             }
         }
         

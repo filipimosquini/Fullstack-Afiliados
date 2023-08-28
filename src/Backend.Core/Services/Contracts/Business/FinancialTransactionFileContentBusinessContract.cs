@@ -15,7 +15,7 @@ public class FinancialTransactionFileContentBusinessContract : AbstractValidator
     }
 
     protected string ProvideErrorMessage()
-        => string.Format(Messages.FileStructureBusinessContract_Message, string.Join("|", Errors.ToArray()));
+        => string.Format(Messages.FileContentBusinessContract_Message, string.Join("|", Errors.ToArray()));
 
     protected async Task ValueIsInteger(string value, Func<List<string>, Task<List<string>>> executeCallback)
     {
@@ -23,12 +23,12 @@ public class FinancialTransactionFileContentBusinessContract : AbstractValidator
 
         if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
+            _errors.Add(Messages.FileContentBusinessContract_ValueNoInformed);
         }
 
         if (!Int32.TryParse(value, out _))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueMustBeInteger);
+            _errors.Add(Messages.FileContentBusinessContract_ValueMustBeInteger);
         }
 
         await executeCallback(_errors);
@@ -40,12 +40,12 @@ public class FinancialTransactionFileContentBusinessContract : AbstractValidator
 
         if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
+            _errors.Add(Messages.FileContentBusinessContract_ValueNoInformed);
         }
 
         if (!double.TryParse(value, out _))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueMustBeDouble);
+            _errors.Add(Messages.FileContentBusinessContract_ValueMustBeDouble);
         }
 
         await executeCallback(_errors);
@@ -57,12 +57,12 @@ public class FinancialTransactionFileContentBusinessContract : AbstractValidator
 
         if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
+            _errors.Add(Messages.FileContentBusinessContract_ValueNoInformed);
         }
 
         if (!DateTime.TryParse(value, out _))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueMustBeDateTime);
+            _errors.Add(Messages.FileContentBusinessContract_ValueMustBeDateTime);
         }
 
         await executeCallback(_errors);
@@ -74,7 +74,7 @@ public class FinancialTransactionFileContentBusinessContract : AbstractValidator
 
         if (string.IsNullOrWhiteSpace(value))
         {
-            _errors.Add(Messages.FileStructureBusinessContract_ValueNoInformed);
+            _errors.Add(Messages.FileContentBusinessContract_ValueNoInformed);
         }
 
         await executeCallback(_errors);
@@ -92,7 +92,7 @@ public class FinancialTransactionFileContentBusinessContract : AbstractValidator
 
                 if (string.IsNullOrWhiteSpace(line))
                 {
-                    Errors.Add( string.Format(Messages.FileStructureBusinessContract_LineIsEmpty, index));
+                    Errors.Add( string.Format(Messages.FileContentBusinessContract_LineIsEmpty, index));
                     continue;
                 }
 

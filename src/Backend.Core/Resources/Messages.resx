@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FileStructureBusinessContract_LineIsEmpty" xml:space="preserve">
+  <data name="FileContentBusinessContract_LineIsEmpty" xml:space="preserve">
     <value>Line {0} is empty</value>
   </data>
-  <data name="FileStructureBusinessContract_Message" xml:space="preserve">
-    <value>File structure is invalid, see log: | {0}</value>
+  <data name="FileContentBusinessContract_Message" xml:space="preserve">
+    <value>Invalid file content, see log: | {0}</value>
   </data>
-  <data name="FileStructureBusinessContract_ValueIsNotNullOrWhiteSpace" xml:space="preserve">
+  <data name="FileContentBusinessContract_ValueIsNotNullOrWhiteSpace" xml:space="preserve">
     <value>Property {0} was no informed at line {1}</value>
   </data>
-  <data name="FileStructureBusinessContract_ValueMustBeDateTime" xml:space="preserve">
+  <data name="FileContentBusinessContract_ValueMustBeDateTime" xml:space="preserve">
     <value>Property {0} must be a date valid at line {1}</value>
   </data>
-  <data name="FileStructureBusinessContract_ValueMustBeDouble" xml:space="preserve">
+  <data name="FileContentBusinessContract_ValueMustBeDouble" xml:space="preserve">
     <value>Property {0} must be a decimal number valid at line {1}</value>
   </data>
-  <data name="FileStructureBusinessContract_ValueMustBeInteger" xml:space="preserve">
+  <data name="FileContentBusinessContract_ValueMustBeInteger" xml:space="preserve">
     <value>Property {0} must be an integer number valid at line {1}</value>
   </data>
-  <data name="FileStructureBusinessContract_ValueNoInformed" xml:space="preserve">
+  <data name="FileContentBusinessContract_ValueNoInformed" xml:space="preserve">
     <value>Property {0} was no informed at line {1}</value>
   </data>
   <data name="FinancialTransactionBusinessContract_DateMustBeValid" xml:space="preserve">
