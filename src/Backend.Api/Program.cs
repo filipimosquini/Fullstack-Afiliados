@@ -1,4 +1,5 @@
 using Backend.Api.Configurations;
+using Backend.Api.Middlewares;
 using Backend.Infra.Configurations;
 using Backend.Ioc.Injectors;
 
@@ -41,6 +42,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    app.UseMiddleware<ExceptionInDevelopmentEnvironmentMiddleware>();
+}
+else
+{
+    app.UseMiddleware<ExceptionMiddleware>();
 }
 
 app.MigrateDatabase();
@@ -56,6 +62,7 @@ app.UseCors(x =>
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.UsingSerilogRequestLogging();
 
