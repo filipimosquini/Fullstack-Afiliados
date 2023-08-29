@@ -1,1 +1,27 @@
-<p>list works!</p>
+<div class="p5">
+  <div class="container">
+    <div>
+      <h1>Financial Transactions</h1>
+      <hr class="mt-5 mb-5">
+
+        <ng-container>
+          <table class="table table-hover" *ngIf="(financialTransactions != null && financialTransactions.length > 0)">
+            <tr>
+              <th scope="col">Seller Name</th>
+              <th scope="col">Total Value</th>
+              <th></th>
+            </tr>
+            <tbody *ngFor="let transaction of financialTransactions">
+              <tr>
+                <td> {{transaction.sellerName}}</td>
+                <td> {{transaction.total | currency:'BRL':'symbol':'1.2-2'}}</td>
+                <td>
+                  <app-transaction-details [financialTransactionDetails]="transaction.details" ></app-transaction-details>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-container>
+    </div>
+  </div>
+</div>

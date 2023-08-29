@@ -1,0 +1,7 @@
+.btn {
+  padding: 6px 10px;
+  font-size: 13px;
+  line-height: 13px;
+  transition: .3s ease-in-out;
+  transition-property: color,background-color,border-color,box-shadow,transform;
+}
