@@ -36,7 +36,7 @@ protected getJsonAuthHeader() {
         })
     };
 }
-  protected getDataResponse(response: any) {
+  protected getResponseData(response: any) {
     return response.data || {};
   }
 

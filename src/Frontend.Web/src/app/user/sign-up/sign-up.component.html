@@ -1,1 +1,54 @@
-<p>sign-up works!</p>
+<div class="p5">
+  <div class="container">
+    <div class="box-form">
+      <h1>Sign Up</h1>
+      <hr class="mt-5 mb-5">
+
+      <form class="form-filtro form-small" enctype="multipart/form-data" novalidate="novalidate" (ngSubmit)="signUp()" [formGroup]="signUpForm">
+
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <h3 id="errorMessages">Oops! something didn't work:</h3>
+          <ul>
+              <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label pl-0">E-mail</label>
+          <div class="pl-0">
+            <input class="form-control" id="email" type="text" placeholder="E-mail (required)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
+            <span class="text-danger" *ngIf="displayMessage.email">
+              <p [innerHTML]="displayMessage.email"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label pl-0">Password</label>
+          <div class="pl-0">
+            <input class="form-control" id="password" type="password" placeholder="Password (required)" formControlName="password" [ngClass]="{'is-invalid': displayMessage.password }" />
+            <span class="text-danger" *ngIf="displayMessage.password">
+              <p [innerHTML]="displayMessage.password"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label pl-0">Confirm Password</label>
+          <div class="pl-0">
+            <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm Password (required)" formControlName="confirmPassword" [ngClass]="{'is-invalid': displayMessage.confirmPassword }" />
+            <span class="text-danger" *ngIf="displayMessage.confirmPassword">
+              <p [innerHTML]="displayMessage.confirmPassword"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span><button class="btn btn-success" id="Create" [disabled]="!signUpForm.valid" type="submit">Create</button></span>
+          <a class="btn btn-light ml-1" href="javascript:window.history.back();">Back</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

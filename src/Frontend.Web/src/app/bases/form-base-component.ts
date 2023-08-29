@@ -28,7 +28,7 @@ export abstract class FormBaseComponent {
     }
 
     protected validateForm(formGroup: FormGroup) {
-        this.displayMessage = this.genericValidator.proccessMessages(formGroup);
+        this.displayMessage = this.genericValidator.processMessages(formGroup);
         this.changesNotSaved = true;
     }
 

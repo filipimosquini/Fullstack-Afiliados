@@ -3,14 +3,14 @@ import { FormGroup } from "@angular/forms";
 export class GenericValidator {
     constructor(private validationMessages: ValidationMessages) { }
 
-    proccessMessages(container: FormGroup): { [key: string]: string } {
+    processMessages(container: FormGroup): { [key: string]: string } {
         let messages = {};
         for (let controlKey in container.controls) {
             if (container.controls.hasOwnProperty(controlKey)) {
                 let c = container.controls[controlKey];
 
                 if (c instanceof FormGroup) {
-                    let childMessages = this.proccessMessages(c);
+                    let childMessages = this.processMessages(c);
                     Object.assign(messages, childMessages);
                 } else {
                     if (this.validationMessages[controlKey]) {
