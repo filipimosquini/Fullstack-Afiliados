@@ -1,1 +1,159 @@
-/* You can add global styles to this file, and also import other style files */
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.main-container {
+  padding-top: 25px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+/* input,
+select,
+file,
+textarea {
+  max-width: 400px;
+} */
+
+
+
+.h3, h3 {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+.valor-carro {
+  color: #3374db;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+.card {
+  border-radius: 5px;
+  box-shadow: 0 1px 5px 0 rgba(70,70,70,.15), 0 2px 2px 0 rgba(70,70,70,.15), 0 3px 2px -2px rgba(70,70,70,.15);
+  overflow: hidden;
+  transition: .3s ease-in-out;
+  transition-property: color,background-color,border-color,box-shadow,transform;
+  transform: translateY(0);
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-descricao {
+  padding: 10px 15px;
+}
+.p5 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+.form-filtro {
+  padding: 20px;
+  background-color: #fdd685;
+  border: 1px solid #fdb10f;
+  display: grid;
+  gap: 15px;
+  border-radius: 5px;
+}
+.form-filtro.form-small {
+  background: #fff;
+  border-color: #fff;
+  padding: 0;
+}
+
+.control-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #000;
+}
+
+.form-control {
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+}
+
+
+.btn {
+  padding: 12px 20px;
+  font-size: 17px;
+  line-height: 26px;
+  transition: .3s ease-in-out;
+  transition-property: color,background-color,border-color,box-shadow,transform;
+}
+
+.box-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media(min-width: 992px){
+  .p5 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}

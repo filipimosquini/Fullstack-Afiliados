@@ -5,6 +5,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +19,15 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   imports: [
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    RouterModule,
+    NgbModule
+  ],
+  exports:[
+    MenuComponent,
+    FooterComponent,
+    NotFoundComponent,
+    LoggedUserComponent
   ]
 })
 export class NavigateModule { }

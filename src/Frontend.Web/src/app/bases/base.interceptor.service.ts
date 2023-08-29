@@ -21,7 +21,7 @@ export class BaseInterceptor implements HttpInterceptor {
 
                 if (error.status === 401) {
                     this.localStorageUtil.cleanUserData();
-                    this.router.navigate(['/user/signin'], { queryParams: { returnUrl: this.router.url }});
+                    this.router.navigate(['/user/sign-in'], { queryParams: { returnUrl: this.router.url }});
                 }
             }
 

@@ -1,10 +1,10 @@
 <ul [ngSwitch]="loggedUser()" class="navbar-nav">
   <li *ngSwitchCase="false" class="nav-item" style="padding-right: 30px;">
-    <a class="btn btn-primary" [routerLink]="['/users/logged-in']">Sign in</a>
+    <a class="btn btn-primary" [routerLink]="['/users/sign-in']">Sign in</a>
   </li>
 
   <li *ngSwitchCase="false" class="nav-item">
-    <a class="btn btn-success" [routerLink]="['/usuarios/cadastro']">Sign up</a>
+    <a class="btn btn-success" [routerLink]="['/users/sign-up']">Sign up</a>
   </li>
 
   <li *ngSwitchCase="true" class="nav-item">
@@ -13,8 +13,8 @@
         {{ email }}
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <a href="javascript:void(0)" ngbDropdownItem [routerLink]="['/veiculos/']">Veículos</a>
-        <a href="javascript:void(0)" ngbDropdownItem (click)="logout()"> Sair <span class="fas fa-sign-out-alt"></span></a>
+        <a href="javascript:void(0)" ngbDropdownItem [routerLink]="['/financial-transactions/']">Financial transactions</a>
+        <a href="javascript:void(0)" ngbDropdownItem (click)="logout()"> Sign out <span class="fas fa-sign-out-alt"></span></a>
       </div>
     </div>
   </li>
