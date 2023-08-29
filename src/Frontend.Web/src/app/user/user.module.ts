@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateComponent } from './create/create.component';
-import { LoggedInComponent } from './logged-in/logged-in.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
 @NgModule({
   declarations: [
-    CreateComponent,
-    LoggedInComponent
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
-    CommonModule,
-    BrowserModule
+    CommonModule
   ]
 })
 export class UserModule { }
