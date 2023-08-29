@@ -51,7 +51,7 @@ public class FinancialTransactionController : MainController
     /// </summary>
     /// <returns> Return list of imported transactions </returns>
     [HttpGet]
-    [Consumes("multipart/form-data")]
+    [Consumes("application/json")]
     [Produces("application/json")]
     [ProducesResponseType(typeof(ImportedTransactionsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

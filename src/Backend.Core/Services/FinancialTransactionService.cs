@@ -118,11 +118,12 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
         var collection = await _unitOfWork.FinancialTransactionRepository.GetImportedTransactionsAsync();
 
         return collection
-            .GroupBy(x => new { x.Seller.Name })
-            .OrderBy(x => x.Key.Name)
+            .GroupBy(x => new { x.Seller })
+            .OrderBy(x => x.Key.Seller.Name)
             .Select(x => new ImportedTransactionsDto
             {
-                SellerName = x.Key.Name,
+                Id = x.Key.Seller.Id,
+                SellerName = x.Key.Seller.Name,
                 Total = (x.Where(x => x.FinancialTransactionType.Signal == "+")
                             .Sum(z => z.Value) - 
                          x.Where(x => x.FinancialTransactionType.Signal == "-")
