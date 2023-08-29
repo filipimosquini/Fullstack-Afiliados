@@ -1,1 +1,21 @@
-<p>logged-user works!</p>
+<ul [ngSwitch]="loggedUser()" class="navbar-nav">
+  <li *ngSwitchCase="false" class="nav-item" style="padding-right: 30px;">
+    <a class="btn btn-primary" [routerLink]="['/users/logged-in']">Sign in</a>
+  </li>
+
+  <li *ngSwitchCase="false" class="nav-item">
+    <a class="btn btn-success" [routerLink]="['/usuarios/cadastro']">Sign up</a>
+  </li>
+
+  <li *ngSwitchCase="true" class="nav-item">
+    <div ngbDropdown class="d-inline-block">
+      <button type="button" class="btn btn-light" id="dropdownBasic1" ngbDropdownToggle>
+        {{ email }}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <a href="javascript:void(0)" ngbDropdownItem [routerLink]="['/veiculos/']">Veículos</a>
+        <a href="javascript:void(0)" ngbDropdownItem (click)="logout()"> Sair <span class="fas fa-sign-out-alt"></span></a>
+      </div>
+    </div>
+  </li>
+</ul>
