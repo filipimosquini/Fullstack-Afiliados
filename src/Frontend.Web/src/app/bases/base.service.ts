@@ -1,11 +1,12 @@
 import { HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { LocalStorageUtils } from "../utils/localstorage";
+import { environment } from "src/environments/environment";
 
 export abstract class BaseService {
 
   public localStorage = new LocalStorageUtils();
-  protected urlApi: string = "https://localhost:7034/api/";
+  protected urlApi: string = environment.urlApi;
 
   protected GetObjectParams(filtro: any){
     let params = new HttpParams();
