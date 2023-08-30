@@ -1,4 +1,5 @@
 ﻿using Backend.Core.Services.Contracts.Business;
+using Backend.Infra.CrossCutting.Converters;
 using Backend.UnitTest.Fixtures;
 using FluentValidation.TestHelper;
 
@@ -19,7 +20,8 @@ public class FinancialTransactionFileContentBusinessContractTest : IClassFixture
     {
         // Arrange
         var contract = new FinancialTransactionFileContentBusinessContract();
-        var file = _fileFixture.CreateFileWithoutErrors();
+        var encodedFile = _fileFixture.CreateEncodedFileWithoutErrors();
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
 
         // Act
         var result = await contract.TestValidateAsync(file);
@@ -33,7 +35,8 @@ public class FinancialTransactionFileContentBusinessContractTest : IClassFixture
     {
         // Arrange
         var contract = new FinancialTransactionFileContentBusinessContract();
-        var file = _fileFixture.CreateFileWithErrors();
+        var encodedFile = _fileFixture.CreateEncodedFileWithErrors();
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
 
         // Act
         var result = await contract.TestValidateAsync(file);
@@ -47,7 +50,8 @@ public class FinancialTransactionFileContentBusinessContractTest : IClassFixture
     {
         // Arrange
         var contract = new FinancialTransactionFileContentBusinessContract();
-        var file = _fileFixture.CreateEmptyLineFile();
+        var encodedFile = _fileFixture.CreateEncodedFileWithEmptyLines();
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
 
         // Act
         var result = await contract.TestValidateAsync(file);

@@ -23,7 +23,7 @@ public class FinancialTransactionImportFileViewModelContractTest : IClassFixture
         var contract = new FinancialTransactionImportFileViewModelContract();
         var viewModel = new FinancialTransactionImportFileViewModel
         {
-            File = _fileFixture.CreateFileWithoutErrors()
+            EncodedFile = _fileFixture.CreateEncodedFileWithoutErrors()
         };
 
         // Act
@@ -40,7 +40,7 @@ public class FinancialTransactionImportFileViewModelContractTest : IClassFixture
         var contract = new FinancialTransactionImportFileViewModelContract();
         var viewModel = new FinancialTransactionImportFileViewModel
         {
-            File = _fileFixture.CreateFileWithErrors("application/json")
+            EncodedFile = _fileFixture.CreateEncodedPdfFile()
         };
 
         // Act
@@ -49,26 +49,6 @@ public class FinancialTransactionImportFileViewModelContractTest : IClassFixture
         // Assert
         result.ShouldHaveAnyValidationError();
     }
-
-    [Theory(DisplayName = "Should content type in file is null or empty expected view model contract valid")]
-    [InlineData(null)]
-    [InlineData(" ")]
-    public void Should_ContentTypeInFileIsNullOrEmpty_Expected_ViewModelContractMustBeInvalid(string contentType)
-    {
-        // Arrange
-        var contract = new FinancialTransactionImportFileViewModelContract();
-        var viewModel = new FinancialTransactionImportFileViewModel
-        {
-            File = _fileFixture.CreateFileWithErrors(contentType)
-        };
-
-        // Act
-        var result = contract.TestValidate(viewModel);
-
-        // Assert
-        result.ShouldHaveAnyValidationError();
-    }
-
 
     [Fact(DisplayName = "Should file is empty and expected view model contract invalid")]
     public void Should_FileIsEmpty_Expected_ViewModelContractMustBeInvalid()
@@ -77,7 +57,7 @@ public class FinancialTransactionImportFileViewModelContractTest : IClassFixture
         var contract = new FinancialTransactionImportFileViewModelContract();
         var viewModel = new FinancialTransactionImportFileViewModel
         {
-            File = _fileFixture.CreateEmptyFile()
+            EncodedFile = _fileFixture.CreateEncodedFileEmpty()
         };
 
         // Act

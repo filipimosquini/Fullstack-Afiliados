@@ -6,6 +6,7 @@ using Backend.Core.Services.Contracts.ViewModels;
 using Backend.Core.Services.DataTransferObjects;
 using Backend.Core.Services.Interfaces;
 using Backend.Core.Services.ViewModels;
+using Backend.Infra.CrossCutting.Converters;
 
 namespace Backend.Core.Services;
 
@@ -82,8 +83,10 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
             return CustomValidationResult;
         }
 
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(viewModel.EncodedFile);
+
         var validateFileContent =
-            await _financialTransactionFileContentBusinessContract.ValidateAsync(viewModel.File);
+            await _financialTransactionFileContentBusinessContract.ValidateAsync(file);
 
         if (!validateFileContent.IsValid)
         {
@@ -91,7 +94,7 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
             return CustomValidationResult;
         }
 
-        var transactionsDto = await _fileService.ExtractDataFromFileAsync(viewModel.File);
+        var transactionsDto = await _fileService.ExtractDataFromFileAsync(file);
 
         var transactions = await CreateFinancialTransactionsAsync(transactionsDto);
 

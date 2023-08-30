@@ -9,6 +9,11 @@ public class FileService : IFileService
 {
     public async Task<IEnumerable<TransactionDto>> ExtractDataFromFileAsync(IFormFile file)
     {
+        if (file is null)
+        {
+            return new List<TransactionDto>();
+        }
+
         using (StreamReader sr = new StreamReader(file.OpenReadStream()))
         {
             string line;

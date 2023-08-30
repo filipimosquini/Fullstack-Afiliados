@@ -3,6 +3,7 @@ using Backend.Core.Bases;
 using Backend.Core.Services.DataTransferObjects;
 using Backend.Core.Services.Interfaces;
 using Backend.Core.Services.ViewModels;
+using Backend.Infra.CrossCutting.Converters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,18 +27,13 @@ public class FinancialTransactionController : MainController
     /// <param name="file"></param>
     /// <returns> Succcessfully message ou errors list </returns>
     [HttpPost("import")]
-    [Consumes("multipart/form-data")]
+    [Consumes("application/json")]
     [Produces("application/json")]
     [ProducesResponseType(typeof(CustomValidationResult), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> ImportAsync(IFormFile file)
+    public async Task<IActionResult> ImportAsync(FinancialTransactionImportFileViewModel viewModel)
     {
-        var viewModel = new FinancialTransactionImportFileViewModel
-        {
-            File = file
-        };
-
         if (!ModelState.IsValid)
         {
             return CustomResponseError(ModelState);
