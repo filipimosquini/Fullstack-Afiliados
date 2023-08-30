@@ -10,7 +10,7 @@ Para executar o projeto é requerido que se tenha o docker instalado na máquina
 
 ![image](https://github.com/filipimosquini/Fullstack-Afiliados/assets/5280221/f951c8c6-e693-4053-821f-824b4fba2ad9)
 
-Abra uma janela de prompt de comando na pasta aonde está o arquivo docker_compose.yml e execute o comando abaixo:
+Abra uma janela de prompt de comando na pasta aonde está o arquivo docker-compose.yml e execute o comando abaixo:
 
 _docker-compose up_
 
