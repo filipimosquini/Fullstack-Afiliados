@@ -21,7 +21,7 @@ public class FinancialTransactionFileContentBusinessContractTest : IClassFixture
         // Arrange
         var contract = new FinancialTransactionFileContentBusinessContract();
         var encodedFile = _fileFixture.CreateEncodedFileWithoutErrors();
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile, "text/plain");
 
         // Act
         var result = await contract.TestValidateAsync(file);
@@ -36,7 +36,7 @@ public class FinancialTransactionFileContentBusinessContractTest : IClassFixture
         // Arrange
         var contract = new FinancialTransactionFileContentBusinessContract();
         var encodedFile = _fileFixture.CreateEncodedFileWithErrors();
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile, "application/json");
 
         // Act
         var result = await contract.TestValidateAsync(file);
@@ -51,7 +51,7 @@ public class FinancialTransactionFileContentBusinessContractTest : IClassFixture
         // Arrange
         var contract = new FinancialTransactionFileContentBusinessContract();
         var encodedFile = _fileFixture.CreateEncodedFileWithEmptyLines();
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile, "text/plain");
 
         // Act
         var result = await contract.TestValidateAsync(file);

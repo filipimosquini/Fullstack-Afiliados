@@ -23,7 +23,8 @@ public class FinancialTransactionImportFileViewModelContractTest : IClassFixture
         var contract = new FinancialTransactionImportFileViewModelContract();
         var viewModel = new FinancialTransactionImportFileViewModel
         {
-            EncodedFile = _fileFixture.CreateEncodedFileWithoutErrors()
+            EncodedFile = _fileFixture.CreateEncodedFileWithoutErrors(),
+            ContentType = "text/plain"
         };
 
         // Act
@@ -33,14 +34,15 @@ public class FinancialTransactionImportFileViewModelContractTest : IClassFixture
         result.ShouldNotHaveAnyValidationErrors();
     }
 
-    [Fact(DisplayName = "Should content type in file has different to text/plain expected view model contract valid")]
+    [Fact(DisplayName = "Should content type in file has different to text/plain expected view model contract invalid")]
     public void Should_ContentTypeInFileHasDifferentToTextPlain_Expected_ViewModelContractMustBeInvalid()
     {
         // Arrange
         var contract = new FinancialTransactionImportFileViewModelContract();
         var viewModel = new FinancialTransactionImportFileViewModel
         {
-            EncodedFile = _fileFixture.CreateEncodedPdfFile()
+            EncodedFile = _fileFixture.CreateEncodedPdfFile(),
+            ContentType = "application/json"
         };
 
         // Act

@@ -44,10 +44,11 @@ public class FinancialTransactionServiceTest : IClassFixture<FileFixture>, IClas
 
         var viewModel = new FinancialTransactionImportFileViewModel()
         {
-            EncodedFile = _fileFixture.CreateEncodedFileWithoutErrors()
+            EncodedFile = _fileFixture.CreateEncodedFileWithoutErrors(),
+            ContentType = "text/plain"
         };
 
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(viewModel.EncodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(viewModel.EncodedFile, viewModel.ContentType);
 
         var transactionsDto = _transactionFixture.List();
         fileService
@@ -99,7 +100,8 @@ public class FinancialTransactionServiceTest : IClassFixture<FileFixture>, IClas
 
         var viewModel = new FinancialTransactionImportFileViewModel()
         {
-            EncodedFile = _fileFixture.CreateEncodedFileEmpty()
+            EncodedFile = _fileFixture.CreateEncodedFileEmpty(),
+            ContentType = "text/plain"
         };
 
         var service = new Mock<FinancialTransactionService>(unitOfWork.Object, fileService.Object, businessContract, viewModelContract, validateFileContentBusinessContract);
@@ -126,7 +128,8 @@ public class FinancialTransactionServiceTest : IClassFixture<FileFixture>, IClas
 
         var viewModel = new FinancialTransactionImportFileViewModel()
         {
-            EncodedFile = _fileFixture.CreateEncodedFileWithErrors()
+            EncodedFile = _fileFixture.CreateEncodedFileWithErrors(),
+            ContentType = "text/plain"
         };
 
         var service = new Mock<FinancialTransactionService>(unitOfWork.Object, fileService.Object, businessContract, viewModelContract, validateFileContentBusinessContract);

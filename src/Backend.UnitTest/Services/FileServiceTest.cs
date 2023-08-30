@@ -25,7 +25,7 @@ public class FileServiceTest : IClassFixture<FileFixture>, IClassFixture<Transac
         var mocker = new AutoMocker();
         var service = mocker.CreateInstance<FileService>();
         var encodedFile = _fileFixture.CreateEncodedFileWithoutErrors();
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile, "text/plain");
 
         // Act
         var result = await service.ExtractDataFromFileAsync(file);
@@ -43,7 +43,7 @@ public class FileServiceTest : IClassFixture<FileFixture>, IClassFixture<Transac
         var mocker = new AutoMocker();
         var service = mocker.CreateInstance<FileService>();
         var encodedFile = _fileFixture.CreateEncodedFileEmpty();
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile, "text/plain");
 
         // Act
         var result = await service.ExtractDataFromFileAsync(file);
@@ -61,7 +61,7 @@ public class FileServiceTest : IClassFixture<FileFixture>, IClassFixture<Transac
         var mocker = new AutoMocker();
         var service = mocker.CreateInstance<FileService>();
         var encodedFile = _fileFixture.CreateEncodedFileWithEmptyLines();
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile, "text/plain");
 
         // Act
         var result = await service.ExtractDataFromFileAsync(file);

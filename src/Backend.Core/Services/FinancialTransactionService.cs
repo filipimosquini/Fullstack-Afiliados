@@ -83,7 +83,7 @@ public class FinancialTransactionService : BaseService, IFinancialTransactionSer
             return CustomValidationResult;
         }
 
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(viewModel.EncodedFile);
+        var file = ConvertBase64ToFormFile.ConvertToFormFile(viewModel.EncodedFile, viewModel.ContentType);
 
         var validateFileContent =
             await _financialTransactionFileContentBusinessContract.ValidateAsync(file);

@@ -1,6 +1,5 @@
 ﻿using Backend.Core.Resources;
 using Backend.Core.Services.ViewModels;
-using Backend.Infra.CrossCutting.Converters;
 using FluentValidation;
 
 namespace Backend.Core.Services.Contracts.ViewModels;
@@ -10,16 +9,17 @@ public class FinancialTransactionImportFileViewModelContract : AbstractValidator
     public FinancialTransactionImportFileViewModelContract()
     {
         RuleFor(x => x.EncodedFile)
-            .Must(FileIsNullOrEmptyValidate).WithMessage(Messages.FinancialTransactionImportFileViewModelContract_FileIsRequired)
+            .Must(FileIsNullOrEmptyValidate)
+            .WithMessage(Messages.FinancialTransactionImportFileViewModelContract_FileIsRequired);
+
+        RuleFor(x => x.ContentType)
             .Must(ContentTypeIsPresentValidate).WithMessage(Messages.FinancialTransactionImportFileViewModelContract_ContentTypeIsRequired)
             .Must(ContentTypeIsTextPlainValidate).WithMessage(Messages.FinancialTransactionImportFileViewModelContract_FileMustBeTextFile);
     }
 
-    protected bool ContentTypeIsPresentValidate(string? encodedFile)
+    protected bool ContentTypeIsPresentValidate(string? contentType)
     {
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
-
-        if (string.IsNullOrWhiteSpace(file?.ContentType))
+        if (string.IsNullOrWhiteSpace(contentType))
         {
             return false;
         }
@@ -27,11 +27,9 @@ public class FinancialTransactionImportFileViewModelContract : AbstractValidator
         return true;
     }
 
-    protected bool ContentTypeIsTextPlainValidate(string? encodedFile)
+    protected bool ContentTypeIsTextPlainValidate(string? contentType)
     {
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
-
-        if (file?.ContentType?.ToLower() != "text/plain")
+        if (string.IsNullOrWhiteSpace(contentType) || contentType?.ToLower() != "text/plain")
         {
             return false;
         }
@@ -41,9 +39,7 @@ public class FinancialTransactionImportFileViewModelContract : AbstractValidator
 
     protected bool FileIsNullOrEmptyValidate(string? encodedFile)
     {
-        var file = ConvertBase64ToFormFile.ConvertToFormFile(encodedFile);
-
-        if (file is null || file?.Length == 0)
+        if (string.IsNullOrWhiteSpace(encodedFile))
         {
             return false;
         }

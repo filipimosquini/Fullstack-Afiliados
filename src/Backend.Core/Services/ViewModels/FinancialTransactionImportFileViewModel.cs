@@ -3,4 +3,5 @@
 public class FinancialTransactionImportFileViewModel
 {
     public string EncodedFile { get; set; }
+    public string ContentType { get; set; }
 }
