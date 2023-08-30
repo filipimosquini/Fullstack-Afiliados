@@ -16,14 +16,19 @@ export class FinancialTransactionService extends BaseService {
       .get(this.urlApi+'financial-transactions/', super.getJsonAuthHeader())
       .pipe(
         map(this.getResponseData),
-        catchError(this.tratarErrosDoServidor))
+        catchError(this.getResponseError))
   }
 
-  // importFinancialTransactions(user: User) : Observable<FinancialTransaction>{
-  //   return this.http
-  //     .post(this.urlApi+'financial-transactions/import', user)
-  //     .pipe(
-  //       map(this.getResponseData),
-  //       catchError(this.tratarErrosDoServidor))
-  // }
+  uploadFinancialTransactionsFile(encodedFile: File) : Observable<any>{
+
+    var obj = {
+      EncodedFile: encodedFile
+    }
+
+    return this.http
+      .post(this.urlApi+'financial-transactions/import', obj, super.getJsonAuthHeader())
+      .pipe(
+        map(this.getResponseData),
+        catchError(this.getResponseError))
+  }
 }

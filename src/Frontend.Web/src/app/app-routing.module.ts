@@ -6,9 +6,8 @@ import { AppGuard } from './app.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: ListComponent },
+  { path: 'home', component: ListComponent, canLoad: [AppGuard] },
   { path: 'users', loadChildren: () => import('./user/user.module').then(x => x.UserModule) },
-  { path: 'financial-transactions', loadChildren: () => import('./financial-transaction/financial-transaction.module').then(x => x.FinancialTransactionModule), canLoad: [AppGuard] },
 
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent }

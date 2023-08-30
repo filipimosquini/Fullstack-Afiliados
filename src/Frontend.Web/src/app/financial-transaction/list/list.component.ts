@@ -10,12 +10,30 @@ import { FinancialTransaction } from '../models/financialTransaction';
 })
 export class ListComponent implements OnInit {
 
+  alertType: string = "success";
   errors: any[] = [];
   public financialTransactions: FinancialTransaction[] = [];
 
   constructor(private service: FinancialTransactionService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.load();
+  }
+
+  private processFailRequest(fail: any){
+    this.errors = fail.error.errors;
+    this.toastr.error("An error has occurred", "Error performing this operation")
+  }
+
+  showErrors(event){
+    this.errors = event;
+  }
+
+  reload(event){
+    this.load();
+  }
+
+  load(){
     this.service.getFinancialTransactions()
     .subscribe({
       next: (financialTransactions) => { this.financialTransactions = financialTransactions },
@@ -25,11 +43,6 @@ export class ListComponent implements OnInit {
       },
       complete: () => {}
     });
-  }
-
-  private processFailRequest(fail: any){
-    this.errors = fail.error.errors;
-    this.toastr.error("An error has occurred", "Error performing this operation")
   }
 
 }

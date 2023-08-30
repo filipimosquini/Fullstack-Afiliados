@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FinancialTransactionService } from './services/financialTransaction.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TransactionDetailsComponent } from './transaction-details/transaction-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,7 @@ import { TransactionDetailsComponent } from './transaction-details/transaction-d
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
     NgbModule
   ],
   providers: [

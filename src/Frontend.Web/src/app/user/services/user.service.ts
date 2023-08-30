@@ -16,7 +16,7 @@ export class UserService extends BaseService {
       .post(this.urlApi+'users', user)
       .pipe(
         map(this.getResponseData),
-        catchError(this.tratarErrosDoServidor))
+        catchError(this.getResponseError))
   }
 
   signIn(user: User) : Observable<User>{
@@ -24,6 +24,6 @@ export class UserService extends BaseService {
       .post(this.urlApi+'sign-in', user)
       .pipe(
         map(this.getResponseData),
-        catchError(this.tratarErrosDoServidor))
+        catchError(this.getResponseError))
   }
 }

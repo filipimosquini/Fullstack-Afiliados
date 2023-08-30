@@ -1,1 +1,24 @@
-<p>import works!</p>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Upload transactions file</h4>
+	</div>
+	<div class="modal-body">
+    <ng-container>
+      <div class="text-center">
+        <input class="form-control" type="file" #fileInput (change)="onChange(fileInput.files)">
+        <button (click)="uploadFile()" class="btn btn-success">
+            Upload
+        </button>
+      </div>
+    </ng-container>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>
+
+<button class="btn btn-outline-dark" (click)="openModal(content)">Upload transactions file</button>
+
+
+
+
