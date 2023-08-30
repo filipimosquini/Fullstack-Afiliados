@@ -2,6 +2,10 @@
 
 This project imports a file containing financial transactions in a business context aimed at selling products by creators and affiliates.
 
+For more information, access a [wiki page](https://github.com/filipimosquini/Fullstack-Afiliados/wiki)
+
+You can read this content in [portuguese](https://github.com/filipimosquini/Fullstack-Afiliados/blob/main/README-pt.md)
+
 # How to run the project
 
 To run the project, you need to have docker installed on your machine.
