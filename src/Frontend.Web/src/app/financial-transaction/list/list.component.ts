@@ -30,6 +30,7 @@ export class ListComponent implements OnInit {
   }
 
   reload(event){
+    this.errors = [];
     this.load();
   }
 
