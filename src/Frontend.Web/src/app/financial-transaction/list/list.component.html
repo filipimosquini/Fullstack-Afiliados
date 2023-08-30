@@ -1,6 +1,6 @@
 <div class="p5">
   <div class="container">
-    <div>
+    <div class="ml-5">
       <h1>Financial Transactions</h1>
       <hr class="mt-5 mb-5">
 
@@ -12,19 +12,25 @@
       </div>
 
       <div class="row">
-        <app-import-transactions-file
-          (complete)="reload($event)"
-          (completeWithErrors)="showErrors($event)"></app-import-transactions-file>
-      </div>
-      <div class="row">
-        <ng-container>
 
-          <p *ngIf="(!financialTransactions || (financialTransactions && financialTransactions.length == 0))">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col-8 col-md-3">
+            <app-import-transactions-file
+            (complete)="reload($event)"
+            (completeWithErrors)="showErrors($event)"></app-import-transactions-file>
+          </div>
+        </div>
+
+        <div class="row text-center" *ngIf="(!financialTransactions || (financialTransactions && financialTransactions.length == 0))">
+          <div>
             <ngb-alert [type]="alertType" [dismissible]="false">
               There are no transaction imported.
             </ngb-alert>
-          </p>
+          </div>
+        </div>
 
+        <ng-container>
           <table class="table table-hover" *ngIf="(financialTransactions && financialTransactions.length > 0)">
             <tr>
               <th scope="col">Seller Name</th>

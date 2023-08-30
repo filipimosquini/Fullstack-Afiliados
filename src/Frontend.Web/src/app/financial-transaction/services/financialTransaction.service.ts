@@ -19,10 +19,11 @@ export class FinancialTransactionService extends BaseService {
         catchError(this.getResponseError))
   }
 
-  uploadFinancialTransactionsFile(encodedFile: File) : Observable<any>{
+  uploadFinancialTransactionsFile(encodedFile: File, contentType: string) : Observable<any>{
 
     var obj = {
-      EncodedFile: encodedFile
+      EncodedFile: encodedFile,
+      ContentType: contentType
     }
 
     return this.http
