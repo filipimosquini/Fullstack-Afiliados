@@ -9,24 +9,53 @@ networks:
 
 services:
 
-  affiliatefullstack.mysql:
-    container_name: affiliatefullstack.mysql
-    image: mysql:8.0.25
-    command: --default-authentication-plugin=mysql_native_password --ssl=0
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
-    restart: always
-    environment: 
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"      
-      MYSQL_DATABASE: affiliatefullstack    
-      MYSQL_ROOT_HOST: '%'
-      MYSQL_PASSWORD: 
-      MYSQL_ROOT_PASSWORD:     
-    volumes:
-      - sqldatafiles:/var/lib/mysql
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    networks:
-      - affiliatefullstack-rede
+   affiliatefullstack.mysql:
+     container_name: affiliatefullstack.mysql
+     image: mysql:8.0.25
+     command: --default-authentication-plugin=mysql_native_password --ssl=0
+     ports:
+       - '3306:3306'
+     expose:
+       - '3306'
+     restart: always
+     environment: 
+       MYSQL_ALLOW_EMPTY_PASSWORD: "true"      
+       MYSQL_DATABASE: affiliatefullstack    
+       MYSQL_ROOT_HOST: '%'
+       MYSQL_PASSWORD: 
+       MYSQL_ROOT_PASSWORD:     
+     volumes:
+       - sqldatafiles:/var/lib/mysql
+     extra_hosts:
+       - "host.docker.internal:host-gateway"
+     networks:
+       - affiliatefullstack-rede
+      
+   affiliatefullstack.api:
+     container_name: affiliatefullstack.api  
+     image: ${DOCKER_REGISTRY-}affiliatefullstackapi
+     build:
+       context: .
+       dockerfile: src/Backend.Api/Dockerfile
+     restart: always      
+     ports: 
+       - "5000:80"
+       - "5001:443"
+     extra_hosts:
+       - "host.docker.internal:host-gateway"
+     networks:
+       - affiliatefullstack-rede
+
+   affiliatefullstack.app:
+     container_name: affiliatefullstack.app
+     image: ${DOCKER_REGISTRY-}affiliatefullstackapp
+     build:
+       context: .
+       dockerfile: src/Frontend.Web/Dockerfile
+     restart: always      
+     ports: 
+       - "4300:90"
+     extra_hosts:
+       - "host.docker.internal:host-gateway"
+     networks:
+       - affiliatefullstack-rede
