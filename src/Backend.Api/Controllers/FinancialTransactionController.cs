@@ -24,7 +24,8 @@ public class FinancialTransactionController : MainController
     /// <summary>
     /// Import transactions from file
     /// </summary>
-    /// <param name="file"></param>
+    /// <param name="EncodedFile"> Get base 64 encrypted file </param>
+    /// <param name="ContentType"> Get content type file </param>
     /// <returns> Succcessfully message ou errors list </returns>
     [HttpPost("import")]
     [Consumes("application/json")]
