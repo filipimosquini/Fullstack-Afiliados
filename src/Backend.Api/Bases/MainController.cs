@@ -77,7 +77,7 @@ public class MainController : Controller
 
     private void AdicionarErros(CustomValidationResult validationResult)
     {
-        var erros = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
+        var erros = validationResult.Errors.SelectMany(x => x.ErrorMessage.Split("|")).ToList();
 
         foreach (var erro in erros)
         {
