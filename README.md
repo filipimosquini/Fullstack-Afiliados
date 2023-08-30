@@ -1,18 +1,18 @@
 # Fullstack Afiliados
 
-Este projeto realiza a importação de um arquivo contendo transações financeiras em um contexto de negócio voltado a venda de produtos por criadores e afiliados.
+This project imports a file containing financial transactions in a business context aimed at selling products by creators and affiliates.
 
-# Como executar o projeto
+# How to run the project
 
-Para executar o projeto é requerido que se tenha o docker instalado na máquina.
+To run the project, you need to have docker installed on your machine.
 
 ![image](https://github.com/filipimosquini/Fullstack-Afiliados/assets/5280221/f951c8c6-e693-4053-821f-824b4fba2ad9)
 
-Abra uma janela de prompt de comando na pasta aonde está o arquivo docker_compose.yml e execute o comando abaixo:
+Open a command prompt window in the folder where the docker_compose.yml file is located and run the command below:
 
 _docker-compose up_
 
-Após o término da execução, acesse a URL http://localhost:5000/swagger/index.html para visualizar os endpoints do backend e a URL http://localhost:4300/ para acessar a aplicação WEB.
+After the execution is finished, access the URL http://localhost:5000/swagger/index.html to view the backend endpoints and the URL http://localhost:4300/ to access the WEB application.
 
 Backend API
 
@@ -23,9 +23,9 @@ Frontend
 ![image](https://github.com/filipimosquini/Fullstack-Afiliados/assets/5280221/63042102-695a-49cd-9ee8-82319823bb90)
 
 
-# Linguagens e Frameworks
+# Languages and Frameworks
 
-* Banco de dados MySQL versão 8.0.25
+* Database MySQL versão 8.0.25
 * Entity Framework Core versão 6.0.21
 * Asp Net Identity versão 6.0.21
 * .NET versão 6
