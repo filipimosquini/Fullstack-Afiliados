@@ -12,7 +12,7 @@ To run the project, you need to have docker installed on your machine.
 
 ![image](https://github.com/filipimosquini/Fullstack-Afiliados/assets/5280221/f951c8c6-e693-4053-821f-824b4fba2ad9)
 
-Open a command prompt window in the folder where the docker_compose.yml file is located and run the command below:
+Open a command prompt window in the folder where the docker-compose.yml file is located and run the command below:
 
 _docker-compose up_
 
